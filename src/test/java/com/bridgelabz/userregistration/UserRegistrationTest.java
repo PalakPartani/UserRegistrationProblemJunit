@@ -21,6 +21,17 @@ public class UserRegistrationTest {
         boolean lastName = UserRegistration.validInputName("Partani");
         Assert.assertTrue(lastName);
     }
+    @Test
+    public void givenMobileNumber_WhenProper_ShouldReturnTrue() {
+        boolean mobileNumber = UserRegistration.validateMobileNumber("91 9404890045");
+        Assert.assertTrue(mobileNumber);
+    }
+    @Test
+    public void givenMobileNumber_WhenImproper_ShouldReturnFalse() {
+        boolean mobileNumber = UserRegistration.validateMobileNumber("123456789");
+        Assert.assertFalse(mobileNumber);
+    }
+
 
     @Test
     public void givenLastName_WhenImproper_ShouldReturnFalse() {
