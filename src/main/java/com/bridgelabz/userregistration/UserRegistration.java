@@ -8,6 +8,7 @@ public class UserRegistration {
     private final static String PASSWORD_ATLEAST_EIGHT_CHARACTER = "^[\\w\\S]{8,}$";
     private final static String PASSWORD_ATLEAST_ONE_UPPERCASE = "(?=.*[A-Z])[A-Za-z]{8,15}";
     private static final String PASSWORD_ATLEAST_ONE_NUMBER = "((?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,10})";
+    public static final String PASSWORD_ATLEAST_ONE_SPECIAL_CHARACTER = "^((?=[^\\W\\_]*[\\W\\_][^\\W\\_]*$)(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9\\W\\_]{8,})$";
 
     public static boolean validUserName(String name) {
         return name.matches(USER_NAME);
@@ -34,5 +35,9 @@ public class UserRegistration {
 
     public static boolean validatePasswordforNumber(String passwordAtleastOneNumber) {
         return passwordAtleastOneNumber.matches(PASSWORD_ATLEAST_ONE_NUMBER);
+    }
+
+    public static boolean validatePasswordforSpecialCharacter(String passwordAtleastOneSpecialCharacter) {
+        return passwordAtleastOneSpecialCharacter.matches(PASSWORD_ATLEAST_ONE_SPECIAL_CHARACTER);
     }
 }

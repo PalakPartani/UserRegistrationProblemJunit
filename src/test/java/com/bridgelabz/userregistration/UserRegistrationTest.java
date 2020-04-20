@@ -58,6 +58,7 @@ public class UserRegistrationTest {
         boolean passwordAtLeastEightCharacterLong = UserRegistration.validatePassword("admin123");
         Assert.assertTrue(passwordAtLeastEightCharacterLong);
     }
+
     @Test
     public void givenEightCharacterLongPassword_WhenImProper_ShouldReturnFalse() {
         boolean passwordAtLeastEightCharacter = UserRegistration.validatePassword("abc");
@@ -69,20 +70,35 @@ public class UserRegistrationTest {
         boolean passwordAtLeastOneUpperCase = UserRegistration.validatePasswordForCase("pppplkPpp");
         Assert.assertTrue(passwordAtLeastOneUpperCase);
     }
+
     @Test
     public void givenAtLeastOneUpperCaseLetterPassword_WhenImproper_ShouldReturnFalse() {
         boolean passwordAtLeastOneUpperCase = UserRegistration.validatePasswordForCase("plkpp");
         Assert.assertFalse(passwordAtLeastOneUpperCase);
     }
+
     @Test
-    public void givenPasswordHasAtLeastOneNumber_WhenProper_ShouldReturnTrue() {
+    public void givenPasswordWithAtLeastOneNumber_WhenProper_ShouldReturnTrue() {
         boolean passwordAtLeastOneNumber = UserRegistration.validatePasswordforNumber("Admin123");
         Assert.assertTrue(passwordAtLeastOneNumber);
     }
+
     @Test
-    public void givenPasswordHasAtLeastOneNumber_WhenProper_ShouldReturnFalse() {
+    public void givenPasswordWithAtLeastOneNumber_WhenProper_ShouldReturnFalse() {
         boolean passwordAtLeastOneNumber = UserRegistration.validatePasswordforNumber("adminadmin");
         Assert.assertFalse(passwordAtLeastOneNumber);
+    }
+
+    @Test
+    public void givenPasswordWithExactlyOneSpecialCharacter_WhenProper_ShouldReturnTrue() {
+        boolean passwordWithExactlyOneSpecialCharacter = UserRegistration.validatePasswordforSpecialCharacter("Admin@123");
+        Assert.assertTrue(passwordWithExactlyOneSpecialCharacter);
+    }
+
+    @Test
+    public void givenPasswordWithExactlyOneSpecialCharacter_WhenImProper_ShouldReturnFalse() {
+        boolean passwordWithExactlyOneSpecialCharacter = UserRegistration.validatePasswordforSpecialCharacter("adm!n@123");
+        Assert.assertFalse(passwordWithExactlyOneSpecialCharacter);
     }
 
 }
