@@ -60,19 +60,29 @@ public class UserRegistrationTest {
     }
     @Test
     public void givenEightCharacterLongPassword_WhenImProper_ShouldReturnFalse() {
-        boolean passwordAtLeastEightCharacterLong = UserRegistration.validatePassword("abc");
-        Assert.assertFalse(passwordAtLeastEightCharacterLong);
+        boolean passwordAtLeastEightCharacter = UserRegistration.validatePassword("abc");
+        Assert.assertFalse(passwordAtLeastEightCharacter);
     }
 
     @Test
     public void givenAtLeastOneUpperCaseLetterPassword_WhenProper_ShouldReturnTrue() {
-        boolean passwordAtLeastOneUpperCaseCharacter = UserRegistration.validatePasswordForCase("pppplkPpp");
-        Assert.assertTrue(passwordAtLeastOneUpperCaseCharacter);
+        boolean passwordAtLeastOneUpperCase = UserRegistration.validatePasswordForCase("pppplkPpp");
+        Assert.assertTrue(passwordAtLeastOneUpperCase);
     }
     @Test
     public void givenAtLeastOneUpperCaseLetterPassword_WhenImproper_ShouldReturnFalse() {
-        boolean passwordAtLeastOneUpperCaseCharacter = UserRegistration.validatePasswordForCase("plkpp");
-        Assert.assertFalse(passwordAtLeastOneUpperCaseCharacter);
+        boolean passwordAtLeastOneUpperCase = UserRegistration.validatePasswordForCase("plkpp");
+        Assert.assertFalse(passwordAtLeastOneUpperCase);
+    }
+    @Test
+    public void givenPasswordHasAtLeastOneNumber_WhenProper_ShouldReturnTrue() {
+        boolean passwordAtLeastOneNumber = UserRegistration.validatePasswordforNumber("Admin123");
+        Assert.assertTrue(passwordAtLeastOneNumber);
+    }
+    @Test
+    public void givenPasswordHasAtLeastOneNumber_WhenProper_ShouldReturnFalse() {
+        boolean passwordAtLeastOneNumber = UserRegistration.validatePasswordforNumber("adminadmin");
+        Assert.assertFalse(passwordAtLeastOneNumber);
     }
 
 }
