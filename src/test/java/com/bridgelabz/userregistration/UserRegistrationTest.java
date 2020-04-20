@@ -64,4 +64,15 @@ public class UserRegistrationTest {
         Assert.assertFalse(passwordAtLeastEightCharacterLong);
     }
 
+    @Test
+    public void givenAtLeastOneUpperCaseLetterPassword_WhenProper_ShouldReturnTrue() {
+        boolean passwordAtLeastOneUpperCaseCharacter = UserRegistration.validatePasswordForCase("pppplkPpp");
+        Assert.assertTrue(passwordAtLeastOneUpperCaseCharacter);
+    }
+    @Test
+    public void givenAtLeastOneUpperCaseLetterPassword_WhenImproper_ShouldReturnFalse() {
+        boolean passwordAtLeastOneUpperCaseCharacter = UserRegistration.validatePasswordForCase("plkpp");
+        Assert.assertFalse(passwordAtLeastOneUpperCaseCharacter);
+    }
+
 }
