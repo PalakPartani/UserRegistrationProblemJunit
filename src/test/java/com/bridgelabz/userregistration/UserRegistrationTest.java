@@ -28,4 +28,15 @@ public class UserRegistrationTest {
         Assert.assertFalse(lastName);
     }
 
+    @Test
+    public void givenEmailId_WhenProper_ShouldReturnTrue() {
+        boolean emailId = UserRegistration.validateEmailId("abc@gmail.com");
+        Assert.assertTrue(emailId);
+    }
+
+    @Test
+    public void givenEmailId_WhenImproper_ShouldReturnFalse() {
+        boolean emailId = UserRegistration.validateEmailId("abcggg.com");
+        Assert.assertFalse(emailId);
+    }
 }
